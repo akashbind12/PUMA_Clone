@@ -131,10 +131,7 @@
     text-align: left;
     padding: 10px;
 }
-.title{
-    /* border : 1px solid red; */
-    /* padding: 10px; */
-}
+
 .title>div:nth-child(1){
     width: 70%;
 }

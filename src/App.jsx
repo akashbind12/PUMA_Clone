@@ -6,6 +6,7 @@ import { Home } from './Pages/Home'
 import { Footer } from './components/Footer'
 import { Routes, Route, Link } from "react-router-dom";
 import { Mens } from './Pages/Mens'
+import { ProductDetails } from './Pages/ProducrDetail'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/mens" element={<Mens></Mens>} />
+          <Route path="/productdetails" element={<ProductDetails></ProductDetails>} />
       </Routes>
       <Footer></Footer>
     </div>
