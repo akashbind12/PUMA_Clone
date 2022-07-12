@@ -8,25 +8,25 @@ export const ProductDetails = () => {
             <div className="product_nav">
                 <ul className="ul">
                     <li>
-                    <a href="#">Home</a>
+                    Home
                     <div className="items_dot">
                         <span className="item-separator-dot"></span>
                     </div>
                     </li>
                     <li>
-                    <a href="product.html">Women</a>
+                    Women
                     <div className="items_dot">
                         <span className="item-separator-dot"></span>
                     </div>
                     </li>
                     <li>
-                    <a href="#">Sports</a>
+                    Sports
                     <div className="items_dot">
                         <span className="item-separator-dot"></span>
                     </div>
                     </li>
                     <li>
-                    <a href="#">Shoes</a>
+                    Shoes
                     <div className="items_dot">
                         <span className="item-separator-dot"></span>
                     </div>
