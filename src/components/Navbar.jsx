@@ -11,12 +11,12 @@ export const Navbar = () => {
         <div className="navcontainer">
             <div className="nav_section">
                     <div className="nav_logo">
-                    <Link to="/"><img className="nav_logo_img" src="https://logos-world.net/wp-content/uploads/2020/04/Puma-Logo-1970-1974.png" alt="" /></Link>
+                    <Link to="/" style={{ textDecoration: 'none' }} ><img className="nav_logo_img" src="https://logos-world.net/wp-content/uploads/2020/04/Puma-Logo-1970-1974.png" alt="" /></Link>
                     </div>
                 <div className="nav_catgories">
                     <div>New Arrivals</div>
                     <div>Womem</div>
-                    <Link to="/mens"><div className="links">Men</div></Link>
+                    <Link to="/mens" style={{ textDecoration: 'none' }} ><div className="links">Men</div></Link>
                     <div>Kids</div>
                     <div>Collabrations</div>
                     <div>Sport</div>
@@ -30,7 +30,7 @@ export const Navbar = () => {
                 </div>
                 <div className="navbar-icons">
                     <div className="navbar-icons-div" ><FiHeart></FiHeart></div>
-                    <Link to="/cart"><div className="navbar-icons-div"><BsCart3></BsCart3></div></Link>
+                    <Link to="/cart" style={{ textDecoration: 'none' }} ><div className="navbar-icons-div"><BsCart3></BsCart3></div></Link>
                     <div className="navbar-icons-div"><VscAccount></VscAccount></div>
                 </div>
             </div>
