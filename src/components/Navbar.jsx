@@ -29,9 +29,9 @@ export const Navbar = () => {
                     <input className="nav_input" type="text" placeholder="SEARCH PUMA.COM" />
                 </div>
                 <div className="navbar-icons">
-                    <div><FiHeart></FiHeart></div>
-                    <div><BsCart3></BsCart3></div>
-                    <div><VscAccount></VscAccount></div>
+                    <div className="navbar-icons-div" ><FiHeart></FiHeart></div>
+                    <Link to="/cart"><div className="navbar-icons-div"><BsCart3></BsCart3></div></Link>
+                    <div className="navbar-icons-div"><VscAccount></VscAccount></div>
                 </div>
             </div>
         </div>

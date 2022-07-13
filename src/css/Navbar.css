@@ -67,7 +67,11 @@
     font-size: 22px;
     padding-top: 15px;
 }
-.navbar-icons>div:hover{
+.navbar-icons-div{
+    /* border: 1px solid red; */
+    color: white;
+}
+.navbar-icons-div:hover{
    color: gray;
 }
 .nav_input{

@@ -3,6 +3,7 @@ import MultipleSelectCheckmarks from "../components/selectbar"
 import "../css/Mens.css"
 import axios from "axios"
 import { useState } from "react"
+import { Link } from "react-router-dom";
 
 
 export const Mens = () => {
@@ -66,7 +67,8 @@ export const Mens = () => {
             <div className="product-div">
                 {mensdata?.map((e,i) => {
                     return (
-                          <div key={i}>
+                        <Link to="/productdetails" style={{ textDecoration: 'none' }}>
+                        <div className="product-div-div" key={i}>
                             <div className="prod-img">
                                 <img src={e.img} alt="img" />
                             </div>
@@ -77,7 +79,7 @@ export const Mens = () => {
                                 </div>
                                 <div className="price">₹{e.price}</div>
                             </div>
-                        </div>    
+                        </div> </Link>   
                     )
                 })}
 

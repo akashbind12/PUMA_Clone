@@ -77,10 +77,12 @@
 .product-img1 {
       height: auto;
       width: 100%;
+      cursor: pointer;
 }
 
 .prod-mid-img {
     display: flex;
+    cursor: pointer;
 }
 
 .img-size {
@@ -149,6 +151,7 @@ h1.prod-name {
     height: 63px;
     border: 1px solid rgb(223, 223, 223);
     margin: 5px 5px 0 0;
+    cursor: pointer;
 }
 
 .design-size:hover {
@@ -169,18 +172,25 @@ h1.prod-name {
 .quantity-div {
     display: inline-block;
     padding: 0 10px;
-}
-
-#quantity {
-    padding: 13px 16px;
-    font-size: 16px;
-    border: 1px solid rgb(223, 223, 223);
-    margin-right: 10px;
-    margin-left: -10px;
     /* border: 1px solid red; */
 }
 
-#quantity:hover {
+.quantity-div>select{
+    padding: 12px 16px;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid rgb(223, 223, 223);
+    margin-right: 10px;
+    margin-left: -10px;
+    cursor: pointer;
+    color: black;
+}
+.quantity-div>select:focus{
+   outline: none;
+}
+
+
+.quantity-div>select:hover {
     border: 1px solid rgb(98, 98, 98);
 }
 

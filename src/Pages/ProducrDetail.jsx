@@ -1,7 +1,12 @@
+import { useScrollTrigger } from "@mui/material"
+import { useState } from "react"
+import { Link } from "react-router-dom"
 import "../css/ProductDetail.css"
 
 
 export const ProductDetails = () => {
+     
+    const [quntity, setQunatity] = useState(1)
 
     return (
         <div className="Product-detail-page">
@@ -102,16 +107,21 @@ export const ProductDetails = () => {
 
                         <div className="quantity-add-to-card">
                         <div className="quantity-div">
-                            <select name="" id="quantity">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                            <select  name="" id="" onChange={(e) => setQunatity(e.target.value)}>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
+                            {/* <select name="" id="">
+                                <option value="">Price High To Low</option>
+                                <option value="">Price Low To High</option>
+                                <option value="">Newest</option>
+                            </select> */}
                         </div>
                         <div className="add-to-cart-btn">
-                            <button className="cart-btn">Add to Cart</button>
+                            <Link to="/cart"><button className="cart-btn">Add to Cart</button></Link>
                             <button className="cLook-btn">Complete the Look</button>
                             <div className="wish-list">
                             <button className="wish-list-btn">

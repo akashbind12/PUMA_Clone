@@ -49,6 +49,7 @@
     height: 100%; 
     width: 100%; 
     padding: 15px;
+    cursor: pointer;
 }
 #cart-item-details{
     line-height: 30px; 
@@ -185,7 +186,8 @@
     justify-content: center;
     line-height: 1.5rem;
     padding: 5px 0 5px 0;
-}#cart-checkout:hover{
+}
+#cart-checkout:hover{
     background-color: #ae946d;
 }
 #checkout{
