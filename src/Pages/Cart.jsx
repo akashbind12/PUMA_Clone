@@ -1,6 +1,7 @@
 import "../css/Cart.css"
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
+import { Link } from "react-router-dom";
 
 
 export const Cart = () => {
@@ -71,7 +72,7 @@ export const Cart = () => {
                     </p>
 
                     <div id="cart-checkout">
-                        <p id="checkout"><b>CHECKOUT</b></p>
+                        <Link to="/checkout" style={{ textDecoration: 'none' }} ><p id="checkout"><b>CHECKOUT</b></p></Link>
                     </div>
                 </div>
                 </div>
