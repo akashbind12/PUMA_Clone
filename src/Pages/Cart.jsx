@@ -3,11 +3,19 @@ import { RiDeleteBinLine } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-
+import { useSelector,useDispatch } from "react-redux";
+import { DelteCart, GetCart } from "../Redux/cart/action";
 
 export const Cart = () => {
 
+    let cartDetails = useSelector((state) => state.carts.cart)
+    console.log("cartDetails", cartDetails)
+    
+    const dispatch = useDispatch()
 
+    useEffect(() => {
+        dispatch(GetCart())
+    },[])
 
     return (
         <div>
@@ -20,35 +28,41 @@ export const Cart = () => {
                 </div>
 
                 <div id="cart-items">
-                    <div id="item-design">
-                    <div id="cart-image">
-                        <img
-                        id="item-image"
-                        src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1500,h_1500/global/586676/58/mod01/fnd/IND/fmt/png/Essentials-Regular-Fit-Men's-Jersey-Polo"/>
-                    </div>
-                    <div id="cart-item-details">
-                        <h3>Essentials Regular Fit Men's Jersey Polo</h3>
-                        <p className="black">Color:<span> Puma Royal </span></p>
-                        <p className="black">Size:<span> L</span></p>
-                        <p className="black">Style_Number:<span> 586676_58</span></p>
-                        <select name="quantity" id="quantity">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        </select>
-                    </div>
-                    <div id="cart-item-price">
-                        <p id="original-price">₹1,299</p>
-                        <div id="cart-icons">
-                        <AiOutlineEdit></AiOutlineEdit>
-                        <RiDeleteBinLine></RiDeleteBinLine>
-                        </div>
-                    </div>
-                    </div> 
-
+                <div className="cart-items-div">
+                {cartDetails.map((item) => {
+                    return (
+                        <div id="item-design">
+                            <div id="cart-image">
+                                <img
+                                id="item-image"
+                                src={item.img} alt="" />
+                            </div>
+                            <div id="cart-item-details">
+                                <h3>{ item.title}</h3>
+                                <p className="black">Color:<span> Puma Royal </span></p>
+                                <p className="black">Size:<span> L</span></p>
+                                <p className="black">Style_Number:<span> 586676_58</span></p>
+                                <select name="quantity" id="quantity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                </select>
+                            </div>
+                            <div id="cart-item-price">
+                                <p id="original-price">{ item.price}</p>
+                                <div id="cart-icons">
+                                <AiOutlineEdit></AiOutlineEdit>
+                                <RiDeleteBinLine onClick={()=> dispatch(DelteCart(item.id))} ></RiDeleteBinLine>
+                                </div>
+                            </div>
+                        </div> 
+                    )
+                })}
+                </div>
+                    
                 <div id="cart-details">
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
                     <div id="Promocode">Apply a Promo Code

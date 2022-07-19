@@ -30,10 +30,11 @@ export const CartFailure = (err) => {
 export const AddToCart = (payload) => (dispatch)=> {
     dispatch(CartRequest())
   
-    
+    console.log("payload",payload)
     axios.post('http://localhost:8080/cart', payload)
       .then(function (response) {
-          console.log("bag",response.data);
+          console.log("bag", response.data);
+          alert("product added to cart")
           dispatch(GetCart())
       })
       .catch(function (error) {

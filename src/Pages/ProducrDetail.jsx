@@ -5,6 +5,8 @@ import "../css/ProductDetail.css"
 import {useParams } from 'react-router-dom';
 import axios from "axios"
 import { useEffect } from "react";
+import { AddToCart } from "../Redux/cart/action";
+import { useDispatch } from "react-redux";
 
 export const ProductDetails = () => {
      
@@ -15,10 +17,12 @@ export const ProductDetails = () => {
         "img1": "",
         "img2": "",
         "title" : "",
-        "price" : 1
+        "price" : 100
       });
 
     let { id } = useParams();
+    const dispatch = useDispatch()
+
 
     useEffect(() => {
         getdata();
@@ -110,7 +114,7 @@ export const ProductDetails = () => {
                             </select>
                         </div>
                         <div className="add-to-cart-btn">
-                            <button className="cart-btn" onClick={AddToCart} >Add to Cart</button>
+                                    <button className="cart-btn" onClick={() => dispatch(AddToCart(product))} >Add to Cart</button>
                             <button className="cLook-btn">Complete the Look</button>
                             <div className="wish-list">
                             <button className="wish-list-btn">

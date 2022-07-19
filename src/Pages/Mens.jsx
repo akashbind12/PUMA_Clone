@@ -17,7 +17,7 @@ export const Mens = () => {
     const getdata = () => {
         axios.get('http://localhost:8080/Mens')
           .then(function (response) {
-              console.log(response.data);
+            //   console.log(response.data);
               setMensdata(response.data)
           })
           .catch(function (error) {
@@ -68,7 +68,7 @@ export const Mens = () => {
             <div className="product-div">
                 {mensdata?.map((e,i) => {
                     return (
-                        <Link to={`/mens/${e.id}`} style={{ textDecoration: 'none' }}>
+                        <Link to={`/mens/${e.id}`} style={{ textDecoration: 'none' }} key={e.id} >
                         <div className="product-div-div" key={i}>
                             <div className="prod-img">
                                 <img src={e.img} alt="img" />
