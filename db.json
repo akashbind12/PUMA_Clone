@@ -200,11 +200,5 @@
       "postId": 1
     }
   ],
-  "Kids": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ]
+  "cart": []
 }

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 export const Mens = () => {
 
     const [mensdata, setMensdata] = useState([])
+    
     useEffect(() => {
         getdata()
     },[])
@@ -67,7 +68,7 @@ export const Mens = () => {
             <div className="product-div">
                 {mensdata?.map((e,i) => {
                     return (
-                        <Link to="/productdetails" style={{ textDecoration: 'none' }}>
+                        <Link to={`/mens/${e.id}`} style={{ textDecoration: 'none' }}>
                         <div className="product-div-div" key={i}>
                             <div className="prod-img">
                                 <img src={e.img} alt="img" />

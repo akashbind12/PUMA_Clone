@@ -2,9 +2,12 @@ import "../css/Cart.css"
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 
 export const Cart = () => {
+
+
 
     return (
         <div>

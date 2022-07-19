@@ -2,64 +2,60 @@ import { useScrollTrigger } from "@mui/material"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import "../css/ProductDetail.css"
-
+import {useParams } from 'react-router-dom';
+import axios from "axios"
+import { useEffect } from "react";
 
 export const ProductDetails = () => {
      
     const [quntity, setQunatity] = useState(1)
+    const [product, setProduct] = useState({
+        "id": 1,
+        "img": "",
+        "img1": "",
+        "img2": "",
+        "title" : "",
+        "price" : 1
+      });
+
+    let { id } = useParams();
+
+    useEffect(() => {
+        getdata();
+    },[])
+    
+    const getdata = () => {
+        axios.get(`http://localhost:8080/Mens/${id}`)
+        .then((res) => {
+            // console.log(res.data)
+            setProduct(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+    })
+    }
+
 
     return (
         <div className="Product-detail-page">
             <div className="product_nav">
-                <ul className="ul">
-                    <li>
-                    Home
-                    <div className="items_dot">
-                        <span className="item-separator-dot"></span>
-                    </div>
-                    </li>
-                    <li>
-                    Women
-                    <div className="items_dot">
-                        <span className="item-separator-dot"></span>
-                    </div>
-                    </li>
-                    <li>
-                    Sports
-                    <div className="items_dot">
-                        <span className="item-separator-dot"></span>
-                    </div>
-                    </li>
-                    <li>
-                    Shoes
-                    <div className="items_dot">
-                        <span className="item-separator-dot"></span>
-                    </div>
-                    </li>
-                    <li className="last_list">Velocity NITRO Men's Running Shoes</li>
-                </ul>
+                <div className="detail-path2">
+                    <div>Home</div>
+                    <div>.</div>
+                    <div>Men</div>
+                    <div>.</div>
+                    <div className="new-arrival">{product.title}</div>
+                </div>
             </div>
 
             <div className="main-body-of-prod-data">
                 <div className="product-details-section">
                     {/* <!-- this is for product images part  start here--> */}
                     <div className="left-product-imgs">
-                    <img
-                        className="product-img1"
-                        src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/194596/06/sv01/fnd/PNA/fmt/png/Velocity-NITRO-Men's-Running-Shoes"
-                        alt="There must be a issue on server image not upload automaticly"
-                    />
+                        <img  className="product-img1" src={product.img} alt="img"/>
                     <div className="prod-mid-img">
-                        <img
-                        className="img-size product-img2"
-                        src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/194596/06/fnd/PNA/fmt/png/Velocity-NITRO-Men's-Running-Shoes"
-                        alt="There must be a issue on server image not upload automaticly"
-                        />
-                        <img
-                        className="img-size product-img3"
-                        src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/194596/06/bv/fnd/PNA/fmt/png/Velocity-NITRO-Men's-Running-Shoes"
-                        alt="There must be a issue on server image not upload automaticly"
-                        />
+                        <img className="img-size product-img2" src={product.img1} alt="img1"/>
+                        <img className="img-size product-img3" src={product.img2} alt="img2"/>
                     </div> 
                     
                     </div>
@@ -69,13 +65,13 @@ export const ProductDetails = () => {
                     <div className="rigth-product-data">
                     <div className="rigth-product-data-div">
                         <div className="left-prod-heading">
-                        <h1 className="prod-name">Velocity NITRO Men's Running Shoes</h1>
+                            <h1 className="prod-name">{product.title}</h1>
                         </div>
                         <div className="prod-price">
-                        <span className="text-danger">₹4,999</span>
+                            <span className="text-danger">₹{product.price}</span>
                         </div>
                         <div className="strick-price">
-                        <span className="text-secondary">₹4,99</span>
+                            <span className="text-secondary">₹4,99</span>
                         </div>
                         <p style={{
                             color :"gray",
@@ -86,7 +82,7 @@ export const ProductDetails = () => {
                         <!-- this part for product design image start here--> */}
 
                         <hr className="hr-line" />
-                          <p className="redline">Additional 5% off on prepaid orders</p>
+                        <p className="redline">Additional 5% off on prepaid orders</p>
                         <hr className="hr-line" />
 
                         <div className="product-variation-container">
@@ -111,17 +107,10 @@ export const ProductDetails = () => {
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
                             </select>
-                            {/* <select name="" id="">
-                                <option value="">Price High To Low</option>
-                                <option value="">Price Low To High</option>
-                                <option value="">Newest</option>
-                            </select> */}
                         </div>
                         <div className="add-to-cart-btn">
-                            <Link to="/cart"><button className="cart-btn">Add to Cart</button></Link>
+                            <button className="cart-btn" onClick={AddToCart} >Add to Cart</button>
                             <button className="cLook-btn">Complete the Look</button>
                             <div className="wish-list">
                             <button className="wish-list-btn">
@@ -151,6 +140,8 @@ export const ProductDetails = () => {
                     </div>
                 </div>
             </div>
+    
+           
         </div>
     )
 }
