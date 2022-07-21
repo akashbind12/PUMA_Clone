@@ -117,13 +117,18 @@
   background-color: #ae946d;
 } 
 
-
+.product-card{
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+}
 .card{
   display:flex; 
+  /* border: 1px solid red; */
 }
 .card img{
   width:20%;
-  margin: 20px;
+  margin: 10px;
+  /* border: 1px solid red; */
 }
 .detail{
   width: 70%;
@@ -154,6 +159,12 @@
 #selt{
   padding: 5px 15px;
 }
+#selt{
+  padding: 5px 15px;
+}
+#selt:focus{
+  outline: none;
+}
 .edit{
   margin-top: 20px;
 } 
@@ -164,6 +175,7 @@
 .editing{
   margin-right : 50px;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 420px) {

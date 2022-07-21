@@ -1,6 +1,20 @@
 import "../css/Checkout.css"
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { DelteCart, GetCart } from "../Redux/cart/action";
 
 export const Checkout = () => {
+
+  
+    let products = useSelector((state) => state.carts.cart)
+    console.log("products", products)
+    
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(GetCart())
+    },[])
+
     
     return (
         <div className="checkout-page">
@@ -34,31 +48,42 @@ export const Checkout = () => {
 
                 {/* ----------rigt part----------- */}
                 <div className="checkout-right">
-                    <h2>Order Details(1) </h2>
+                    <h2>Order Details({products.length}) </h2>
                     <div className="line"></div>
-                    <div className="card">
-                        <img style={{Height : "70%"}} src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_100,h_100/global/380435/04/sv01/fnd/IND/fmt/png/Electron-E-Unisex-Shoes"
-                        alt="" />
-                        <div className="detail">
-                        <div className="detail-left">PUMA Serve Pro Lite Unisex Shoes</div>
-                        <div className="detail-right">
-                            <p>₹2,699</p>
-                        </div>
-                        </div>
-                    </div>
-                    <div className="card-below">
-                        <div className="card-left"></div>
-                        <div className="card-right">
-                            <p>EAN : 4063699564136 </p>
-                            <p> Puma White-Balsam Green-Puma Team Gold</p>
-                            <p>Size:11</p>
-                            <select  name="" id="selt"></select>
-                            <div className="edit">
-                                <span className="editing" >Edit</span>
-                                <span className="editing">Remove</span>
+                    {products.map((e) => {
+                        return (
+                            <div className="product-card">
+                                <div className="card">
+                                    <img style={{Height : "70%"}} src={e.img} alt="" />
+                                    <div className="detail">
+                                        <div className="detail-left">{e.title}</div>
+                                    <div className="detail-right">
+                                        <p>₹{e.price}</p>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div className="card-below">
+                                    <div className="card-left"></div>
+                                    <div className="card-right">
+                                        <p>EAN : {Math.floor(Math.random() * 10100000000)} </p>
+                                        {/* <p> Puma White-Balsam Green-Puma Team Gold</p> */}
+                                        <p>Size:11</p>
+                                        <select name="" id="selt">
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                            <option value="">3</option>
+                                        </select>
+                                        <div className="edit">
+                                            <span className="editing" >Edit</span>
+                                            <span className="editing" onClick={() => dispatch(DelteCart(e.id))} >Remove</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        )
+                    })}
+                    
+
                     <div className="line"></div> 
                     <div className="promo">
                         <h2>Apply a Promo Code</h2>

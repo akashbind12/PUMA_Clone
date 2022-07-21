@@ -41,7 +41,7 @@ export const Cart = () => {
                                 <h3>{ item.title}</h3>
                                 <p className="black">Color:<span> Puma Royal </span></p>
                                 <p className="black">Size:<span> L</span></p>
-                                <p className="black">Style_Number:<span> 586676_58</span></p>
+                                <p className="black">Style_Number:<span> {Math.floor(Math.random() * 10100000000)}</span></p>
                                 <select name="quantity" id="quantity">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -52,7 +52,7 @@ export const Cart = () => {
                                 </select>
                             </div>
                             <div id="cart-item-price">
-                                <p id="original-price">{ item.price}</p>
+                                <p id="original-price">₹ {item.price}</p>
                                 <div id="cart-icons">
                                 <AiOutlineEdit></AiOutlineEdit>
                                 <RiDeleteBinLine onClick={()=> dispatch(DelteCart(item.id))} ></RiDeleteBinLine>
