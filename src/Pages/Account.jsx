@@ -68,7 +68,10 @@ export const Account = () => {
 
                         <div className="bottom">
                         <div className="login_btn_div">
-                            <button className="login_btn" style={{width : "410px"}}>CREATE ACCOUNT</button>
+                            <button className="login_btn" style={{width : "410px"}} onClick={() => {
+                            setAccount("login")
+                            setResgister("")
+                         }}>CREATE ACCOUNT</button>
                         </div>
                         </div>
                     </div>
