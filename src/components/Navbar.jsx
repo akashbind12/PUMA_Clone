@@ -31,7 +31,7 @@ export const Navbar = () => {
                 <div className="navbar-icons">
                     <div className="navbar-icons-div" ><FiHeart></FiHeart></div>
                     <Link to="/cart" style={{ textDecoration: 'none' }} ><div className="navbar-icons-div"><BsCart3></BsCart3></div></Link>
-                    <div className="navbar-icons-div"><VscAccount></VscAccount></div>
+                    <Link to="/account" style={{ textDecoration: 'none' }} ><div className="navbar-icons-div"><VscAccount></VscAccount></div></Link>
                 </div>
             </div>
         </div>

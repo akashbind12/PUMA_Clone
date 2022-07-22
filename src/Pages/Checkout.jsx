@@ -49,7 +49,7 @@ export const Checkout = () => {
                 {/* ----------rigt part----------- */}
                 <div className="checkout-right">
                     <h2>Order Details({products.length}) </h2>
-                    <div className="line"></div>
+                    <div className="check-line"></div>
                     {products.map((e) => {
                         return (
                             <div className="product-card">

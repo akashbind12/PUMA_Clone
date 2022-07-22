@@ -8,6 +8,7 @@ import { Mens } from './Pages/Mens'
 import { ProductDetails } from './Pages/ProducrDetail'
 import { Cart } from './Pages/Cart'
 import { Checkout } from './Pages/Checkout'
+import { Account } from './Pages/Account'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/mens/:id" element={<ProductDetails></ProductDetails>} />
           <Route path="/cart" element={<Cart></Cart> } />
           <Route path="/checkout" element={<Checkout></Checkout>} />
+          <Route path="/account" element={<Account></Account>} />
       </Routes>
       <Footer></Footer>
     </div>
