@@ -14,7 +14,12 @@ export const Checkout = () => {
     useEffect(() => {
         dispatch(GetCart())
     },[])
-
+    
+    const subtotal = products.reduce(function (a, v) {
+        return a + v.price
+    },0)
+    // console.log(subtotal)
+    const Total = subtotal + 100;
     
     return (
         <div className="checkout-page">
@@ -93,15 +98,15 @@ export const Checkout = () => {
                     <div className="total">
                         <div className="subtotal">
                             <p>SubTotal</p>
-                            <p>₹ 2699</p>
+                            <p>₹ {subtotal}</p>
                             </div>
                             <div className="subtotal">  
                             <p>Shipping costs</p>
-                            <p>₹0</p>
+                            <p>₹100</p>
                             </div>
                             <div className="subtotal">
                             <h4>Grand Total</h4>
-                            <h4>₹2699</h4>
+                            <h4>₹{Total}</h4>
                         </div>
                     </div>  
                 </div>

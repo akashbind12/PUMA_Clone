@@ -15,9 +15,9 @@ export const Navbar = () => {
                     </div>
                 <div className="nav_catgories">
                     <div>New Arrivals</div>
-                    <div>Womem</div>
+                    <Link to="/womens" style={{ textDecoration: 'none' }} ><div className="links">Womem</div></Link>
                     <Link to="/mens" style={{ textDecoration: 'none' }} ><div className="links">Men</div></Link>
-                    <div>Kids</div>
+                    <Link to="/mens" style={{ textDecoration: 'none' }} ><div className="links">Kids</div></Link>
                     <div>Collabrations</div>
                     <div>Sport</div>
                     <div>Outlet</div>

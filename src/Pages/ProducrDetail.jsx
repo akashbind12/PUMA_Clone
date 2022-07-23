@@ -2,7 +2,7 @@ import { useScrollTrigger } from "@mui/material"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import "../css/ProductDetail.css"
-import {useParams } from 'react-router-dom';
+import {useParams,useLocation } from 'react-router-dom';
 import axios from "axios"
 import { useEffect } from "react";
 import { AddToCart } from "../Redux/cart/action";
@@ -22,14 +22,15 @@ export const ProductDetails = () => {
 
     let { id } = useParams();
     const dispatch = useDispatch()
-
+    const location = useLocation();
+    const category = location.pathname.split("/")
 
     useEffect(() => {
         getdata();
     },[])
     
     const getdata = () => {
-        axios.get(`http://localhost:8080/Mens/${id}`)
+        axios.get(`http://localhost:8080${location.pathname}`)
         .then((res) => {
             // console.log(res.data)
             setProduct(res.data)
@@ -46,7 +47,7 @@ export const ProductDetails = () => {
                 <div className="detail-path2">
                     <div>Home</div>
                     <div>.</div>
-                    <div>Men</div>
+                    <div>{category[1]}</div>
                     <div>.</div>
                     <div className="new-arrival">{product.title}</div>
                 </div>

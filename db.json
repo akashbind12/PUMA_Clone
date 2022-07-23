@@ -389,20 +389,28 @@
   ],
   "cart": [
     {
-      "id": 3,
-      "img": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/380435/01/sv01/fnd/IND/fmt/png/Electron-E-Unisex-Shoes",
-      "img1": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1500,h_1500/global/380435/01/fnd/IND/fmt/png/Electron-E-Unisex-Shoes",
-      "img2": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1500,h_1500/global/380435/01/bv/fnd/IND/fmt/png/Electron-E-Unisex-Shoes",
+      "id": 24,
+      "img": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/522236/01/mod01/fnd/IND/fmt/png/STUDIO-AOP-CROP-TOP",
+      "img1": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1500,h_1500/global/522236/01/mod02/fnd/IND/fmt/png/STUDIO-AOP-CROP-TOP",
+      "img2": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1500,h_1500/global/522236/01/mod03/fnd/IND/fmt/png/STUDIO-AOP-CROP-TOP",
+      "title": "STUDIO AOP CROP TOP",
+      "price": 2999
+    },
+    {
+      "id": 2,
+      "img": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/380435/03/sv01/fnd/IND/fmt/png/Electron-E-Unisex-Shoes",
+      "img1": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1500,h_1500/global/380435/03/fnd/IND/fmt/png/Electron-E-Unisex-Shoes",
+      "img2": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1500,h_1500/global/380435/03/bv/fnd/IND/fmt/png/Electron-E-Unisex-Shoes",
       "title": "Electron E Unisex Shoes",
       "price": 4999
     },
     {
-      "id": 14,
-      "img": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/384638/07/sv01/fnd/IND/fmt/png/X-Ray-Speed-Men's-Sneakers",
-      "img1": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/384638/07/fnd/IND/fmt/png/X-Ray-Speed-Men's-Sneakers",
-      "img2": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/384638/07/bv/fnd/IND/fmt/png/X-Ray-Speed-Men's-Sneakers",
-      "title": "X-Ray Speed Men's Sneakers",
-      "price": 6999
+      "id": 18,
+      "img": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/671751/01/mod01/fnd/IND/fmt/png/Classics-Sweatpants",
+      "img1": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1500,h_1500/global/671751/01/mod02/fnd/IND/fmt/png/Classics-Sweatpants",
+      "img2": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1500,h_1500/global/671751/01/mod05/fnd/IND/fmt/png/Classics-Sweatpants",
+      "title": "Classics Sweatpants",
+      "price": 3999
     }
   ]
 }

@@ -9,13 +9,20 @@ import { DelteCart, GetCart } from "../Redux/cart/action";
 export const Cart = () => {
 
     let cartDetails = useSelector((state) => state.carts.cart)
-    console.log("cartDetails", cartDetails)
+    // console.log("cartDetails", cartDetails)
     
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(GetCart())
     },[])
+    
+   
+        const subtotal = cartDetails.reduce(function (a, v) {
+            return a + v.price
+        },0)
+        // console.log(subtotal)
+    const Total = subtotal + 100;
 
     return (
         <div>
@@ -48,7 +55,6 @@ export const Cart = () => {
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
-                                <option value="6">6</option>
                                 </select>
                             </div>
                             <div id="cart-item-price">
@@ -74,18 +80,18 @@ export const Cart = () => {
                     </div>
                     <div id="prices">
                     <p className="sub-total">
-                        SubTotal<span className="price-span"> ₹1,039 </span>
+                        SubTotal<span className="price-span"> ₹{subtotal} </span>
                     </p>
 
                     <p className="sub-total">
-                        Shipping costs<span className="price-span Shipping">₹0</span>
+                        Shipping costs<span className="price-span Shipping">₹100</span>
                     </p>
                     <div className="line"></div>
                     </div>
 
                     <p className="grand-total">
                     <b>Grand Total</b><span id="tax"> Prices include GST</span>
-                    <span className="price-span grand_total"><b>₹1,039</b></span>
+                            <span className="price-span grand_total"><b>₹{Total}</b></span>
                     </p>
 
                     <div id="cart-checkout">
