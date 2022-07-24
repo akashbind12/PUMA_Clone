@@ -29,7 +29,7 @@ export const Mens = () => {
       },[sort,setSearchParams])
 
     const getdata = () => {
-        axios.get(`http://localhost:8080/Mens${location.search}`)
+        axios.get(`https://puma-clone.herokuapp.com/Mens${location.search}`)
           .then(function (response) {
               console.log(response.data);
               setMensdata(response.data)

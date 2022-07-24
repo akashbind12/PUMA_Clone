@@ -28,7 +28,7 @@ export const Womens = () => {
       },[sort,setSearchParams])
 
     const getdata = () => {
-        axios.get(`http://localhost:8080/Womens${location.search}`)
+        axios.get(`https://puma-clone.herokuapp.com/Womens${location.search}`)
           .then(function (response) {
               console.log(response.data);
               setWomensdata(response.data)

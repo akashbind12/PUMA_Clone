@@ -30,7 +30,7 @@ export const ProductDetails = () => {
     },[])
     
     const getdata = () => {
-        axios.get(`http://localhost:8080${location.pathname}`)
+        axios.get(`https://puma-clone.herokuapp.com${location.pathname}`)
         .then((res) => {
             // console.log(res.data)
             setProduct(res.data)
@@ -44,13 +44,13 @@ export const ProductDetails = () => {
     return (
         <div className="Product-detail-page">
             <div className="product_nav">
-                <div className="detail-path2">
+                {/* <div className="detail-path2">
                     <div>Home</div>
                     <div>.</div>
                     <div>{category[1]}</div>
                     <div>.</div>
                     <div className="new-arrival">{product.title}</div>
-                </div>
+                </div> */}
             </div>
 
             <div className="main-body-of-prod-data">
