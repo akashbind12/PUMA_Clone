@@ -2,7 +2,7 @@ import "../css/Cart.css"
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { DelteCart, GetCart } from "../Redux/cart/action";
 
@@ -18,16 +18,18 @@ export const Cart = () => {
     },[])
     
    
-        const subtotal = cartDetails.reduce(function (a, v) {
-            return a + v.price
-        },0)
-        // console.log(subtotal)
-    const Total = subtotal + 100;
+    const subtotal = cartDetails.reduce(function (a, v) {
+        return a + v.price
+    },0)
+    // console.log(subtotal)
+    const Total = subtotal + (cartDetails==0 ? 0 : 100);
+
+     
 
     return (
         <div>
             <div id="sub">
-            <h1>MY SHOPPING CART<span id="cart-count">(1)</span></h1>
+            <h1>MY SHOPPING CART<span id="cart-count">({cartDetails.length})</span></h1>
                 <div id="easy-returns">
                     <p>
                         <i className="fas fa-undo"></i> Free and easy returns on all orders.
@@ -84,7 +86,7 @@ export const Cart = () => {
                     </p>
 
                     <p className="sub-total">
-                        Shipping costs<span className="price-span Shipping">₹100</span>
+                                Shipping costs<span className="price-span Shipping">₹{cartDetails==0 ? 0 : 100}</span>
                     </p>
                     <div className="line"></div>
                     </div>

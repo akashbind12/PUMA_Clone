@@ -4,33 +4,47 @@ import "../css/Mens.css"
 import axios from "axios"
 import { useState } from "react"
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 
 
 export const Womens = () => {
 
-    const [womensdata, setMensdata] = useState([])
+    const location = useLocation();
+    const [womensdata, setWomensdata] = useState([])
+    const [searchParams, setSearchParams] = useSearchParams()
     
     useEffect(() => {
         getdata()
-    },[])
+    }, [location.search])
+    
+
+    const [sort, setSort] = useState(null)
+    console.log(sort)
+    useEffect(() => {
+        if (sort) {
+            setSearchParams({_sort : "price", _order : sort,}, {replace : true})
+        }
+      },[sort,setSearchParams])
 
     const getdata = () => {
-        axios.get('http://localhost:8080/Womens')
+        axios.get(`http://localhost:8080/Womens${location.search}`)
           .then(function (response) {
-            //   console.log(response.data);
-              setMensdata(response.data)
+              console.log(response.data);
+              setWomensdata(response.data)
           })
           .catch(function (error) {
             console.log(error);
           });
     }
+    
 
-    const Categories = ["footewesr", "accossries", "appreal"]
-    const ProductType = ["Casual Shoes", "T-Shirts", "Pants", "Gloves", "Cricket"]
-    const Price = ["Less Than 1000", "1000-3000", "3000-5000", "5000-7000"]
+    const Categories = ["Apparel","Footwear"]
+    const ProductType = ["Casual Shoes","Running Shoes","Sneakers","T-Shirts", "Pants","Shorts","Suit"]
+    const Price = ["1000-3000", "3000-5000", "5000-7000","7000-12000"]
     const Gender = ["Female", "Male", "Unisex"]
-    const Size = ["Low", "Medium", "High"]
-    const Color = ["Black", "gray", "Blue", "Green", "Red", "Orange", "Yellow", "White"]
+    const Size = ["Small", "Medium", "Large"]
+    const Color = ["Black", "Gray","Pink","Blue", "Green", "Yellow", "White","Orange"]
     const Sortby = ["Price Low To High","Price High To Low","Newest"]
 
     return (
@@ -56,9 +70,9 @@ export const Womens = () => {
                     </div>
                     <div className="bar-right">
                         {/* <MultipleSelectCheckmarks title={"Sortby"} names={Sortby}></MultipleSelectCheckmarks> */}
-                        <select name="" id="">
-                            <option value="">Price High To Low</option>
-                            <option value="">Price Low To High</option>
+                        <select name=""  onChange={(e) => setSort(e.target.value)}>
+                            <option value="desc">Price High To Low</option>
+                            <option value="asc">Price Low To High</option>
                             <option value="">Newest</option>
                          </select>
                     </div>

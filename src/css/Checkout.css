@@ -90,7 +90,13 @@
   font-size: 1.5rem;
 }
 
-#checkout-input > input[type="submit"]{
+.checkout-button{
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+  height: 50px;
+  border: 1px solid #ccc; 
+  padding: 0 20px 0 20px;
   font-size: .9375rem;
   font-weight: 600;
   letter-spacing: .025rem;
@@ -101,7 +107,7 @@
   color: #fff;
   cursor: pointer;
 }
-#checkout-input > input[type="submit"]:hover{
+.checkout-button:hover{
   background-color: #ae946d;
 }
 .Apply-btn{

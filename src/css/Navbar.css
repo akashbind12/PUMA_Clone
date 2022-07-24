@@ -70,6 +70,7 @@
 .navbar-icons-div{
     /* border: 1px solid red; */
     color: white;
+    font-weight: 800;
 }
 .navbar-icons-div:hover{
    color: gray;
@@ -110,4 +111,15 @@
     border-bottom: 2px solid #ae946d;
     color: gray;
     cursor: pointer;
+}
+.cartno{
+    /* border: 1px solid red; */
+    background-color: #c00;;
+    text-align: center;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -37px 0 0 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
 }

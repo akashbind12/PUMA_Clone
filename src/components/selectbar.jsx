@@ -6,6 +6,8 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 4;
@@ -20,14 +22,25 @@ const MenuProps = {
 
 
 export default function MultipleSelectCheckmarks({names,title}) {
-    const [personName, setPersonName] = React.useState([]);
-    // console.log(personName) // we will get selected value here use redux to handle state
+    const [Name, setName] = React.useState([]);
 
+  const [searchParams, setSearchParams] = useSearchParams()
+  
+  // console.log(title, Name)
+  console.log(searchParams.getAll([title]))
+    // we will get selected value here use redux to handle state
+    // setSearchParams( { title : Name })
+    useEffect(() => {
+     
+      
+      setSearchParams( { [title]: Name }, {replace : true})
+    },[Name,setSearchParams])
+  
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
+    setName(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
@@ -41,7 +54,7 @@ export default function MultipleSelectCheckmarks({names,title}) {
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
-          value={personName}
+          value={Name}
           onChange={handleChange}
           input={<OutlinedInput label="Categoryty" />}
           renderValue={(selected) => selected.join(', ')}
@@ -49,7 +62,7 @@ export default function MultipleSelectCheckmarks({names,title}) {
         >
           {names.map((name) => (
             <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
+              <Checkbox checked={Name.indexOf(name) > -1} />
               <ListItemText primary={name} />
             </MenuItem>
           ))}

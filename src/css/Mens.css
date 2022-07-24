@@ -88,6 +88,7 @@
     font-size: 1rem;
     margin-top: 5px;
     outline: none;
+    cursor: pointer;
 }
 .bar-right>select :focus{
     outline: none;

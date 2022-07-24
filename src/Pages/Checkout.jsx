@@ -2,6 +2,7 @@ import "../css/Checkout.css"
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { DelteCart, GetCart } from "../Redux/cart/action";
+import { Link } from "react-router-dom";
 
 export const Checkout = () => {
 
@@ -20,6 +21,11 @@ export const Checkout = () => {
     },0)
     // console.log(subtotal)
     const Total = subtotal + 100;
+
+    const handleCheckout = (e) => {
+        e.preventDefault()
+        alert("Order Placed successfully")
+    }
     
     return (
         <div className="checkout-page">
@@ -47,7 +53,9 @@ export const Checkout = () => {
                             <input name="mob" type="text"placeholder="Number" />
                             <input name="mob2" type="text"placeholder="Additional Number" />
                         </div>
-                        <input  type="submit" value="Place Order" />
+                        <Link to="/" style={{ textDecoration: 'none' }} >
+                            <input className="checkout-button" type="submit" value="Place Order" />
+                        </Link>
                     </form>
                 </div>
 
