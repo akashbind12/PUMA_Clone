@@ -12,7 +12,7 @@ export const Home = () => {
                     <div>SEASON SALE</div>
                     <div className="btns_div">
                         <Link to="/mens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP MEN</button></Link>
-                        <Link to="/mens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP WOMEN</button></Link>
+                        <Link to="/womens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP WOMEN</button></Link>
                         <Link to="/mens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP KIDS</button></Link>
                     </div>
                 </div>
@@ -24,7 +24,7 @@ export const Home = () => {
                     <div>AT BEST PRICE</div>
                     <div className="btns_div">
                     <Link to="/mens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP MEN</button></Link>
-                    <Link to="/mens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP WOMEN</button></Link>
+                    <Link to="/womens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP WOMEN</button></Link>
                     <Link to="/mens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP KIDS</button></Link>
                     </div>
                 </div>
@@ -44,7 +44,7 @@ export const Home = () => {
                     <div className="head11">FLEX FRESH FITS</div>
                     <div className="btns_div">
                     <Link to="/mens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP MEN</button></Link>
-                    <Link to="/mens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP WOMEN</button></Link>
+                    <Link to="/womens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP WOMEN</button></Link>
                     <Link to="/mens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP KIDS</button></Link>
                     </div>
                 </div>
@@ -99,7 +99,7 @@ export const Home = () => {
                     <div className="head11">WALK IT OFF</div>
                     <div className="btns_div">
                     <Link to="/mens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP MEN</button></Link>
-                    <Link to="/mens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP WOMEN</button></Link>
+                    <Link to="/womens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP WOMEN</button></Link>
                     <Link to="/mens" style={{ textDecoration: 'none' }} ><button className="btn">SHOP KIDS</button></Link>
                     </div>
                 </div>
