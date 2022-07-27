@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { DelteCart, GetCart } from "../Redux/cart/action";
 import { Link } from "react-router-dom";
+import CircularIndeterminate from "../components/Loading";
 
 export const Checkout = () => {
 
   
     let products = useSelector((state) => state.carts.cart)
+    let loading = useSelector((state) => state.carts.isLoading)
     console.log("products", products)
     
     const dispatch = useDispatch()
@@ -33,7 +35,7 @@ export const Checkout = () => {
                 <div className="checkout-left">
                     <h1>CHECKOUT</h1>
                     <h2>Signin for faster checkout experience</h2>
-                    <div className="sign-btn" > sign in</div>
+                    <Link to="/account" style={{ textDecoration: 'none' }} ><div className="sign-btn" > sign in</div></Link>
                     <div className="addresses">
                         <h4 style={{fontWeight : "400"}}> ADDRESSES</h4>
                     </div>
@@ -63,39 +65,44 @@ export const Checkout = () => {
                 <div className="checkout-right">
                     <h2>Order Details({products.length}) </h2>
                     <div className="check-line"></div>
-                    {products.map((e) => {
-                        return (
-                            <div className="product-card">
-                                <div className="card">
-                                    <img style={{Height : "70%"}} src={e.img} alt="" />
-                                    <div className="detail">
-                                        <div className="detail-left">{e.title}</div>
-                                    <div className="detail-right">
-                                        <p>₹{e.price}</p>
+                    {loading ? <div className="loading" ><CircularIndeterminate /></div>
+                    :
+                    <div>
+                        {products.map((e) => {
+                            return (
+                                <div className="product-card">
+                                    <div className="card">
+                                        <img style={{ Height: "70%" }} src={e.img} alt="" />
+                                        <div className="detail">
+                                            <div className="detail-left">{e.title}</div>
+                                            <div className="detail-right">
+                                                <p>₹{e.price}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    </div>
-                                </div>
-                                <div className="card-below">
-                                    <div className="card-left"></div>
-                                    <div className="card-right">
-                                        <p>EAN : {Math.floor(Math.random() * 10100000000)} </p>
-                                        {/* <p> Puma White-Balsam Green-Puma Team Gold</p> */}
-                                        <p>Size:11</p>
-                                        <select name="" id="selt">
-                                            <option value="">1</option>
-                                            <option value="">2</option>
-                                            <option value="">3</option>
-                                        </select>
-                                        <div className="edit">
-                                            <span className="editing" >Edit</span>
-                                            <span className="editing" onClick={() => dispatch(DelteCart(e.id))} >Remove</span>
+                                    <div className="card-below">
+                                        <div className="card-left"></div>
+                                        <div className="card-right">
+                                            <p>EAN : {Math.floor(Math.random() * 10100000000)} </p>
+                                            {/* <p> Puma White-Balsam Green-Puma Team Gold</p> */}
+                                            <p>size : {e.Size}</p>
+                                            <select name="" id="selt">
+                                                <option value="1">{e.qty}</option>
+                                                <option value="">1</option>
+                                                <option value="">2</option>
+                                                <option value="">3</option>
+                                            </select>
+                                            <div className="edit">
+                                                <span className="editing" >Edit</span>
+                                                <span className="editing" onClick={() => dispatch(DelteCart(e.id))} >Remove</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    })}
-                    
+                            )
+                        })}
+                    </div>
+                    }
 
                     <div className="line"></div> 
                     <div className="promo">

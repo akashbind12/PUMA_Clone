@@ -54,14 +54,11 @@ export const Cart = () => {
                                         <div id="cart-item-details">
                                             <h3>{item.title}</h3>
                                             <p className="black">Color:<span> Puma Royal </span></p>
-                                            <p className="black">Size:<span> L</span></p>
+                                            <p className="black">Size:<span>{item.Size}</span></p>
                                             <p className="black">Style_Number:<span> {Math.floor(Math.random() * 10100000000)}</span></p>
                                             <select name="quantity" id="quantity">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
+                                                <option value="1">{item.qty}</option>
+                                                
                                             </select>
                                         </div>
                                         <div id="cart-item-price">

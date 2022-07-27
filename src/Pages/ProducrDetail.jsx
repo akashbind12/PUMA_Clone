@@ -11,6 +11,10 @@ import { useDispatch } from "react-redux";
 export const ProductDetails = () => {
      
     const [quntity, setQunatity] = useState(1)
+    const [small, setSmall] = useState("s")
+    const [medium, setMedium] = useState("m")
+    const [large, setLarge] = useState("l")
+    const [size, setSize] = useState("M")
     const [product, setProduct] = useState({
         "id": 1,
         "img": "",
@@ -95,13 +99,28 @@ export const ProductDetails = () => {
                         </div>
 
                         <ul className="prod-size-cate">
-                        <li className="design-size">
+                        <li className="design-size" id={`${small}`} onClick={() => {
+                                setSmall("S")
+                                setMedium("m")
+                                setLarge("l")
+                                setSize("S")
+                            }}>
                             <p className="p-size">S</p>
                         </li>
-                        <li className="design-size">
+                        <li className="design-size" id={`${medium}`} onClick={() => {
+                                setSmall("s")
+                                setMedium("M")
+                                setLarge("l")
+                                setSize("M")
+                            }} >
                             <p className="p-size">M</p>
                         </li>
-                        <li className="design-size">
+                        <li className="design-size" id={`${large}`} onClick={() => {
+                                setSmall("s")
+                                setMedium("m")
+                                setLarge("L")
+                                setSize("L")
+                            }} >
                             <p className="p-size">L</p>
                         </li>
                         </ul>
@@ -115,7 +134,7 @@ export const ProductDetails = () => {
                             </select>
                         </div>
                         <div className="add-to-cart-btn">
-                                    <button className="cart-btn" onClick={() => dispatch(AddToCart(product))} >Add to Cart</button>
+                                    <button className="cart-btn" onClick={() => dispatch(AddToCart({ ...product, qty: quntity, Size : size }))} >Add to Cart</button>
                             <button className="cLook-btn">Complete the Look</button>
                             <div className="wish-list">
                             <button className="wish-list-btn">

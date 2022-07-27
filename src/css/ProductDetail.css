@@ -275,6 +275,14 @@ h1.prod-name {
     font-family: FFDINforPuma,-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;
 }
 
-
+#S{
+    border : 1px solid black
+}
+#M{
+    border : 1px solid black
+}
+#L{
+    border : 1px solid black
+}
 
 
