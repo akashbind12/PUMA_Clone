@@ -6,13 +6,14 @@ import { useState } from "react"
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom"
 import { useSearchParams } from "react-router-dom"
-
+import CircularIndeterminate from "../components/Loading"
 
 export const Womens = () => {
 
     const location = useLocation();
     const [womensdata, setWomensdata] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
+    const [loading, setLoading] = useState(false)
     
     useEffect(() => {
         getdata()
@@ -28,8 +29,10 @@ export const Womens = () => {
       },[sort,setSearchParams])
 
     const getdata = () => {
+        setLoading(true)
         axios.get(`https://puma-clone.herokuapp.com/Womens${location.search}`)
-          .then(function (response) {
+            .then(function (response) {
+              setLoading(false)
               console.log(response.data);
               setWomensdata(response.data)
           })
@@ -78,27 +81,29 @@ export const Womens = () => {
                     </div>
                 </div>
             </div>
+            
+            {loading ? <div className="loading"><CircularIndeterminate /></div>
+                :
+                <div className="product-div">
+                    {womensdata?.map((e, i) => {
+                        return (
+                            <Link to={`/womens/${e.id}`} style={{ textDecoration: 'none' }} key={e.id} >
+                                <div className="product-div-div" key={i}>
+                                    <div className="prod-img">
+                                        <img src={e.img} alt="img" />
+                                    </div>
+                                    <div className="prod-title">
+                                        <div className="title">
+                                            <div>{e.title}</div>
+                                            <div>Additional 5% off on prepaid orders</div>
+                                        </div>
+                                        <div className="price">₹{e.price}</div>
+                                    </div>
+                                </div> </Link>
+                        )
+                    })}
 
-            <div className="product-div">
-                {womensdata?.map((e,i) => {
-                    return (
-                        <Link to={`/womens/${e.id}`} style={{ textDecoration: 'none' }} key={e.id} >
-                        <div className="product-div-div" key={i}>
-                            <div className="prod-img">
-                                <img src={e.img} alt="img" />
-                            </div>
-                            <div className="prod-title">
-                                <div className="title">
-                                    <div>{e.title}</div>
-                                    <div>Additional 5% off on prepaid orders</div>
-                                </div>
-                                <div className="price">₹{e.price}</div>
-                            </div>
-                        </div> </Link>   
-                    )
-                })}
-
-            </div>
+                </div>}
         </div>
     )
 }

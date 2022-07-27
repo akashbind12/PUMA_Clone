@@ -153,7 +153,12 @@
     padding: 10px 0 10px 0;
 }
 
-
+.loading{
+    margin: auto;
+    width: 20%;
+    /* border: 1px solid red; */
+    text-align: center;
+}
 
 @media only screen and (min-width: 0px) and (max-width: 420px) {
     .path{

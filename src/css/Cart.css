@@ -212,3 +212,18 @@
     padding: 8px; 
     color: white;
 }
+
+.loading{
+    margin: 100px auto;
+    width: 20%;
+    padding-top: 100px;
+    /* border: 1px solid red; */
+    text-align: center;
+}
+
+.loading{
+    margin: auto;
+    width: 20%;
+    /* border: 1px solid red; */
+    text-align: center;
+}
