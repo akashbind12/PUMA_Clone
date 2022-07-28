@@ -1,4 +1,6 @@
 import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const GET_CART_REQUEST = "GET_CART_REQUEST";
@@ -34,11 +36,27 @@ export const AddToCart = (payload) => (dispatch)=> {
     axios.post('https://puma-clone.herokuapp.com/cart', payload)
       .then(function (response) {
           console.log("bag", response.data);
-          alert("product added to cart")
+          toast.success('Product added to cart sucessfully', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
           dispatch(GetCart())
       })
       .catch(function (error) {
-          console.log(error);
+        toast.error('Product already exist in cart', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
           dispatch(CartFailure(error.message))
       });
 }
@@ -65,6 +83,15 @@ export const DelteCart = (id) => (dispatch)=> {
     axios.delete(`https://puma-clone.herokuapp.com/cart/${id}`)
     .then(function (response) {
         console.log(response.data);
+        toast.success('Product removed from cart sucessfully', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         dispatch(GetCart())
     })
     .catch(function (error) {

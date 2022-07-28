@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { DelteCart, GetCart } from "../Redux/cart/action";
 import CircularIndeterminate from "../components/Loading";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Cart = () => {
 
@@ -105,7 +107,8 @@ export const Cart = () => {
                     </div>
                 }
                     
-                </div>
+            </div>
+            <ToastContainer/>
         </div>
     )
 }

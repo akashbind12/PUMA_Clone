@@ -7,6 +7,8 @@ import axios from "axios"
 import { useEffect } from "react";
 import { AddToCart } from "../Redux/cart/action";
 import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ProductDetails = () => {
      
@@ -27,7 +29,7 @@ export const ProductDetails = () => {
     let { id } = useParams();
     const dispatch = useDispatch()
     const location = useLocation();
-    const category = location.pathname.split("/")
+
 
     useEffect(() => {
         getdata();
@@ -134,7 +136,7 @@ export const ProductDetails = () => {
                             </select>
                         </div>
                         <div className="add-to-cart-btn">
-                                    <button className="cart-btn" onClick={() => dispatch(AddToCart({ ...product, qty: quntity, Size : size }))} >Add to Cart</button>
+                                    <button className="cart-btn" onClick={() => dispatch(AddToCart({ ...product, qty: quntity, Size : size }))}> Add to Cart </button>
                             <button className="cLook-btn">Complete the Look</button>
                             <div className="wish-list">
                             <button className="wish-list-btn">
@@ -165,7 +167,8 @@ export const ProductDetails = () => {
                 </div>
             </div>
     
-           
+            <ToastContainer />
         </div>
+       
     )
 }

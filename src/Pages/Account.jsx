@@ -33,8 +33,8 @@ export const Account = () => {
                     {account == "login" ?
                     <div className="login-input-div">
                         <div className="mid">
-                        <input type="text" placeholder=" USER NAME" className="user_name" onChange={()=> setName(true)} />
-                        <input type="text" placeholder=" PASSWORD" className="login_password" />
+                        <input type="text" placeholder=" USER NAME" className="user_name" required={true} onChange={()=> setName(true)} />
+                        <input type="text" placeholder=" PASSWORD" className="login_password" required="true" />
                         </div>
 
                         <div className="bottom">

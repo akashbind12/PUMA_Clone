@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { DelteCart, GetCart } from "../Redux/cart/action";
 import { Link } from "react-router-dom";
 import CircularIndeterminate from "../components/Loading";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Checkout = () => {
 
@@ -22,7 +24,7 @@ export const Checkout = () => {
         return a + v.price
     },0)
     // console.log(subtotal)
-    const Total = subtotal + 100;
+    const Total = subtotal + (products==0 ? 0 : 100);
 
     const handleCheckout = (e) => {
         e.preventDefault()
@@ -117,7 +119,7 @@ export const Checkout = () => {
                             </div>
                             <div className="subtotal">  
                             <p>Shipping costs</p>
-                            <p>₹100</p>
+                            <p>₹{products == 0 ? 0 : 100}</p>
                             </div>
                             <div className="subtotal">
                             <h4>Grand Total</h4>
@@ -127,6 +129,7 @@ export const Checkout = () => {
                 </div>
           
             </div>
+            <ToastContainer/>
         </div>
     )
 }
