@@ -24,13 +24,13 @@ export const Womens = () => {
     console.log(sort)
     useEffect(() => {
         if (sort) {
-            setSearchParams({_sort : "price", _order : sort,}, {replace : true})
+            setSearchParams({ order : sort,}, {replace : true})
         }
       },[sort,setSearchParams])
 
     const getdata = () => {
         setLoading(true)
-        axios.get(`https://puma-clone.herokuapp.com/Womens${location.search}`)
+        axios.get(`https://puma-api.herokuapp.com/Womens${location.search}`)
             .then(function (response) {
               setLoading(false)
               console.log(response.data);
@@ -87,7 +87,7 @@ export const Womens = () => {
                 <div className="product-div">
                     {womensdata?.map((e, i) => {
                         return (
-                            <Link to={`/womens/${e.id}`} style={{ textDecoration: 'none' }} key={e.id} >
+                            <Link to={`/womens/${e._id}`} style={{ textDecoration: 'none' }} key={i} >
                                 <div className="product-div-div" key={i}>
                                     <div className="prod-img">
                                         <img src={e.img} alt="img" />

@@ -36,7 +36,7 @@ export const ProductDetails = () => {
     },[])
     
     const getdata = () => {
-        axios.get(`https://puma-clone.herokuapp.com${location.pathname}`)
+        axios.get(`https://puma-api.herokuapp.com${location.pathname}`)
         .then((res) => {
             // console.log(res.data)
             setProduct(res.data)

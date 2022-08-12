@@ -67,7 +67,7 @@ export const Cart = () => {
                                             <p id="original-price">₹ {item.price}</p>
                                             <div id="cart-icons">
                                                 <AiOutlineEdit></AiOutlineEdit>
-                                                <RiDeleteBinLine onClick={() => dispatch(DelteCart(item.id))} ></RiDeleteBinLine>
+                                                <RiDeleteBinLine onClick={() => dispatch(DelteCart(item._id))} ></RiDeleteBinLine>
                                             </div>
                                         </div>
                                     </div>

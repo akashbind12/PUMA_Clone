@@ -1,13 +1,51 @@
 import { useState } from "react";
 import "../css/Account.css"
-import {Link} from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Account = () => {
     
-    const [name, setName] = useState(false);
+    const [username, setUserName] = useState(null);
+    const [password, setPassword] = useState(null);
+
+    const [firstname, setFirstName] = useState(null);
+    const [lastname, setLastName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [pass, setPass] = useState(null);
 
     const [account, setAccount] = useState("login")
     const [regiser, setResgister] = useState("")
+
+    const navigate = useNavigate()
+
+    const CheckInputs = () => {
+        console.log(username ,":", password)
+        if (username && password) {
+            toast.success('Login successfull', {
+                position: "top-center",
+                })
+            navigate("/")
+        } else {
+            toast.error('Fill all the details', {
+                position: "top-center",
+                });
+        }
+    }
+
+    const CheckRegisterInput = () => {
+        if (firstname && lastname && email && pass) {
+            toast.success('Register successfull', {
+                position: "top-center",
+                })
+                setAccount("login")
+                setResgister("")
+        } else {
+            toast.error('Fill all the details', {
+                position: "top-center",
+                });
+        }
+    }
 
     return (
         <div className="account-page">
@@ -33,8 +71,8 @@ export const Account = () => {
                     {account == "login" ?
                     <div className="login-input-div">
                         <div className="mid">
-                        <input type="text" placeholder=" USER NAME" className="user_name" required={true} onChange={()=> setName(true)} />
-                        <input type="text" placeholder=" PASSWORD" className="login_password" required="true" />
+                        <input type="text" placeholder=" USER NAME" className="user_name" required={true} onChange={(e)=> setUserName(e.target.value)} />
+                        <input type="text" placeholder=" PASSWORD" className="login_password" required="true" onChange={(e) => setPassword(e.target.value)} />
                         </div>
 
                         <div className="bottom">
@@ -48,8 +86,8 @@ export const Account = () => {
                         </div>
                         <div className="login_btn_div">
                             <div>
-                            <Link to="/"><button  className="login_btn">Login</button></Link>
-                            {/* disabled={!name} */}
+                            {/* <Link to="/"><button  className="login_btn" onClick={CheckInputs} >Login</button></Link> */}
+                            <button  className="login_btn" onClick={CheckInputs} >Login</button>
                             </div>
                             <div>
                             <Link to="">FORGOTTEN YOUR PASSWORD?</Link>
@@ -60,18 +98,15 @@ export const Account = () => {
                     :
                     <div className="login-input-div">
                         <div className="mid">
-                        <input type="text" placeholder=" FIRST NAME" className="user_name" />
-                            <input type="text" placeholder=" LAST NAME" className="login_password" />
-                            <input type="text" placeholder=" EMAIL" className="login_password" />
-                            <input type="text" placeholder=" PASSWORD" className="login_password" />
+                        <input type="text" placeholder=" FIRST NAME" className="user_name" onChange={(e)=> setFirstName(e.target.value)}  />
+                            <input type="text" placeholder=" LAST NAME" className="login_password" onChange={(e)=> setLastName(e.target.value)}  />
+                            <input type="text" placeholder=" EMAIL" className="login_password" onChange={(e)=> setEmail(e.target.value)}  />
+                            <input type="text" placeholder=" PASSWORD" className="login_password" onChange={(e)=> setPass(e.target.value)}  />
                         </div>
 
                         <div className="bottom">
                         <div className="login_btn_div">
-                            <button className="login_btn" style={{width : "410px"}} onClick={() => {
-                            setAccount("login")
-                            setResgister("")
-                         }}>CREATE ACCOUNT</button>
+                            <button className="login_btn" style={{width : "410px"}} onClick={CheckRegisterInput}>CREATE ACCOUNT</button>
                         </div>
                         </div>
                     </div>
@@ -98,6 +133,7 @@ export const Account = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     )
 }

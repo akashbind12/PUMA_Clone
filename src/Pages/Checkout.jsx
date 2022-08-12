@@ -96,7 +96,7 @@ export const Checkout = () => {
                                             </select>
                                             <div className="edit">
                                                 <span className="editing" >Edit</span>
-                                                <span className="editing" onClick={() => dispatch(DelteCart(e.id))} >Remove</span>
+                                                <span className="editing" onClick={() => dispatch(DelteCart(e._id))} >Remove</span>
                                             </div>
                                         </div>
                                     </div>
