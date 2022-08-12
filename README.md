@@ -52,10 +52,10 @@ To run, follow these steps:
 ## Built with 
 - React
 - Redux
-- redux-thunk
+- Node
+- Express
 - CSS
 - Material-ui
-- json-server
 
 ## Creator
 
