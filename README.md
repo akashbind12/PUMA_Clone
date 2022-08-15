@@ -54,8 +54,10 @@ To run, follow these steps:
 - Redux
 - Node
 - Express
+- MongoDb
 - CSS
 - Material-ui
+- firebase-auth
 
 ## Creator
 
