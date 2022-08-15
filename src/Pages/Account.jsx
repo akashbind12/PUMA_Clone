@@ -3,10 +3,12 @@ import "../css/Account.css"
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { auth } from '../components/firebase';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { useDispatch } from "react-redux";
 export const Account = () => {
     
-    const [username, setUserName] = useState(null);
+    const [useremail, setUserEmail] = useState(null);
     const [password, setPassword] = useState(null);
 
     const [firstname, setFirstName] = useState(null);
@@ -19,13 +21,27 @@ export const Account = () => {
 
     const navigate = useNavigate()
 
-    const CheckInputs = () => {
-        console.log(username ,":", password)
-        if (username && password) {
-            toast.success('Login successfull', {
-                position: "top-center",
-                })
-            navigate("/")
+    function signUp(email, pass) {
+        return createUserWithEmailAndPassword(auth, email, pass);
+    }
+
+    const handleSignup = async (e) => {
+        if (firstname && lastname && email && pass) {
+            try {
+                await signUp(email, pass);
+                toast.success('Register successfull', {
+                    position: "top-center",
+                    })
+                    setAccount("login")
+                    setResgister("")
+                // navigate("/")
+            } catch (err) {
+                console.log(err.message)
+                toast.error(err.message, {
+                    position: "top-center",
+                    });
+                // alert(err.message)
+            }
         } else {
             toast.error('Fill all the details', {
                 position: "top-center",
@@ -33,19 +49,34 @@ export const Account = () => {
         }
     }
 
-    const CheckRegisterInput = () => {
-        if (firstname && lastname && email && pass) {
-            toast.success('Register successfull', {
-                position: "top-center",
-                })
-                setAccount("login")
-                setResgister("")
+    function login(email, password) {
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+  
+
+
+    const handleLogin = async (e) => {
+        if (useremail && password) {
+            try {
+                await login(useremail, password);
+                toast.success('Login successfull', {
+                    position: "top-center",
+                    })
+                navigate("/")
+            } catch (err) {
+                console.log(err.message)
+                toast.error(err.message, {
+                    position: "top-center",
+                    });
+                // alert(err.message)
+            }
         } else {
             toast.error('Fill all the details', {
                 position: "top-center",
                 });
         }
     }
+
 
     return (
         <div className="account-page">
@@ -71,7 +102,7 @@ export const Account = () => {
                     {account == "login" ?
                     <div className="login-input-div">
                         <div className="mid">
-                        <input type="text" placeholder=" USER NAME" className="user_name" required={true} onChange={(e)=> setUserName(e.target.value)} />
+                        <input type="text" placeholder=" EMAIL" className="user_name" required={true} onChange={(e)=> setUserEmail(e.target.value)} />
                         <input type="text" placeholder=" PASSWORD" className="login_password" required="true" onChange={(e) => setPassword(e.target.value)} />
                         </div>
 
@@ -87,7 +118,7 @@ export const Account = () => {
                         <div className="login_btn_div">
                             <div>
                             {/* <Link to="/"><button  className="login_btn" onClick={CheckInputs} >Login</button></Link> */}
-                            <button  className="login_btn" onClick={CheckInputs} >Login</button>
+                            <button  className="login_btn" onClick={handleLogin} >Login</button>
                             </div>
                             <div>
                             <Link to="">FORGOTTEN YOUR PASSWORD?</Link>
@@ -106,7 +137,7 @@ export const Account = () => {
 
                         <div className="bottom">
                         <div className="login_btn_div">
-                            <button className="login_btn" style={{width : "410px"}} onClick={CheckRegisterInput}>CREATE ACCOUNT</button>
+                            <button className="login_btn" style={{width : "410px"}} onClick={handleSignup}>CREATE ACCOUNT</button>
                         </div>
                         </div>
                     </div>
