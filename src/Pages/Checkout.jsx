@@ -1,20 +1,35 @@
 import "../css/Checkout.css"
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { DelteCart, GetCart } from "../Redux/cart/action";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CircularIndeterminate from "../components/Loading";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const Checkout = () => {
 
-  
+    
+    const [checkoutdata, setCheckoutData] = useState({
+        "firstName" : "",
+        "lastName": "",
+        "pin": "",
+        "Address1": "",
+        "Address2": "",
+        "city": "",
+        "state": "",
+        "Country": "",
+        "email": "",
+        "mob" : ""
+    })
+
+
     let products = useSelector((state) => state.carts.cart)
     let loading = useSelector((state) => state.carts.isLoading)
     console.log("products", products)
     
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(GetCart())
@@ -26,11 +41,34 @@ export const Checkout = () => {
     // console.log(subtotal)
     const Total = subtotal + (products==0 ? 0 : 100);
 
-    const handleCheckout = (e) => {
-        e.preventDefault()
-        alert("Order Placed successfully")
+  
+
+    const handleChange = (e) => {
+        setCheckoutData({
+            ...checkoutdata,
+            [e.target.name] : e.target.value
+        })
+        console.log(checkoutdata)
     }
-    
+
+
+    const handleCheckout =  (e) => {
+        e.preventDefault()
+        if (checkoutdata.firstName && checkoutdata.lastName && checkoutdata.email
+            && checkoutdata.Address1 && checkoutdata.mob && checkoutdata.pin) {
+                toast.success('Order placed succefully', {
+                    position: "top-center",
+                })
+                navigate("/")
+        } else {
+                toast.error('Fill all the Details', {
+                    position: "top-center",
+                });
+        }
+
+    }
+
+
     return (
         <div className="checkout-page">
             <div className="checkout-container">
@@ -41,25 +79,25 @@ export const Checkout = () => {
                     <div className="addresses">
                         <h4 style={{fontWeight : "400"}}> ADDRESSES</h4>
                     </div>
-                    <form id="checkout-input">
-                        <input name="firstName" type="text" placeholder="First name" />
-                        <input name="lastName" type="text"placeholder="Last name" />
-                        <input name="pin" type="number"placeholder="Post code" />
-                        <input name="Address1"  type="text"placeholder="Address1" />
-                        <input name="Address2" type="text"placeholder="Address2"/>
-                        <input name="city" type="text"placeholder="city"/>
-                        <input name="state" type="text"placeholder="State" />
-                        <input name="Country" type="text"placeholder="Country" />
+                    <form id="checkout-input" onSubmit={handleCheckout} >
+                        <input name="firstName" type="text" placeholder="First name" onChange={handleChange} />
+                        <input name="lastName" type="text"placeholder="Last name" onChange={handleChange}  />
+                        <input name="pin" type="number"placeholder="Post code" onChange={handleChange}  />
+                        <input name="Address1"  type="text"placeholder="Address1" onChange={handleChange} />
+                        <input name="Address2" type="text"placeholder="Address2" onChange={handleChange} />
+                        <input name="city" type="text"placeholder="city" onChange={handleChange}  />
+                        <input name="state" type="text"placeholder="State" onChange={handleChange}  />
+                        {/* <input name="Country" type="text"placeholder="Country" onChange={handleChange}  /> */}
                         
                         <div id="checkout-addinfo"> 
                             <p >Enter Contact Info (for Order Invoice)</p>
-                            <input name="email" type="text"placeholder="Email" />
-                            <input name="mob" type="text"placeholder="Number" />
-                            <input name="mob2" type="text"placeholder="Additional Number" />
+                            <input name="email" type="text"placeholder="Email" onChange={handleChange} />
+                            <input name="mob" type="text"placeholder="Number" onChange={handleChange} />
+                            <input name="mob2" type="text"placeholder="Additional Number" onChange={handleChange} />
                         </div>
-                        <Link to="/" style={{ textDecoration: 'none' }} >
+                        {/* <Link to="/" style={{ textDecoration: 'none' }} > */}
                             <input className="checkout-button" type="submit" value="Place Order" />
-                        </Link>
+                        {/* </Link> */}
                     </form>
                 </div>
 
