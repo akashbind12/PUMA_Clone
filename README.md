@@ -1,4 +1,4 @@
-# FAB-BAG_clone
+# Puma_clone
 
 ## frontend
 https://puma-clone-eight.vercel.app/
