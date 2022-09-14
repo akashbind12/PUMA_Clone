@@ -13,6 +13,7 @@ export const Mens = () => {
     const [mensdata, setMensdata] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
     const [loading, setLoading] = useState(false)
+    const [sort, setSort] = useState([])
 
     const [filter, setFilter] = useState({
         Category: [],
@@ -21,6 +22,7 @@ export const Mens = () => {
         Gender: [],
         Size: [],
         Color: [],
+        order : []
     })
     
     useEffect(() => {
@@ -30,21 +32,15 @@ export const Mens = () => {
     console.log(location.search)
     const category = location.pathname.split("/")
    
-
-    const [sort, setSort] = useState(null)
-    console.log(sort)
     useEffect(() => {
         setSearchParams(filter, { replace: true })
-        if (sort) {
-            setSearchParams({order : sort,}, {replace : true})
-        }
       },[sort,setSearchParams,filter])
 
     const getdata = () => {
 
         setLoading(true)
 
-        axios.get(`https://puma-api.herokuapp.com/Mens${location.search}`)
+        axios.get(`https://puma-new-backend.herokuapp.com/Mens${location.search}`)
             .then(function (response) {
                 setLoading(false)
               console.log(response.data);
@@ -53,6 +49,10 @@ export const Mens = () => {
           .catch(function (error) {
             console.log(error);
           });
+    }
+
+    const handleSort = (value) => {
+        setFilter({...filter, order : value})
     }
 
 
@@ -87,7 +87,7 @@ export const Mens = () => {
                     </div>
                     <div className="bar-right">
                         {/* <MultipleSelectCheckmarks title={"Sortby"} names={Sortby}></MultipleSelectCheckmarks> */}
-                        <select name=""  onChange={(e) => setSort(e.target.value)} >
+                        <select name=""  onChange={(e) => handleSort(e.target.value)} >
                             <option value="desc"  >Price High To Low</option>
                             <option value="asc"  >Price Low To High</option>
                          </select>

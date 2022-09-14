@@ -14,6 +14,7 @@ export const Womens = () => {
     const [womensdata, setWomensdata] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
     const [loading, setLoading] = useState(false)
+    const [sort, setSort] = useState([])
 
     const [filter, setFilter] = useState({
         Category: [],
@@ -22,6 +23,7 @@ export const Womens = () => {
         Gender: [],
         Size: [],
         Color: [],
+        order : []
     })
     
     useEffect(() => {
@@ -29,18 +31,13 @@ export const Womens = () => {
     }, [location.search])
     
 
-    const [sort, setSort] = useState(null)
-    console.log(sort)
     useEffect(() => {
         setSearchParams(filter, { replace: true })
-        if (sort) {
-            setSearchParams({order : sort,}, {replace : true})
-        }
       },[sort,setSearchParams,filter])
 
     const getdata = () => {
         setLoading(true)
-        axios.get(`https://puma-api.herokuapp.com/Womens${location.search}`)
+        axios.get(`https://puma-new-backend.herokuapp.com/womens${location.search}`)
             .then(function (response) {
               setLoading(false)
               console.log(response.data);
@@ -50,6 +47,11 @@ export const Womens = () => {
             console.log(error);
           });
     }
+
+    const handleSort = (value) => {
+        setFilter({...filter, order : value})
+    }
+
     
 
     const Categories = ["Apparel","Footwear"]
@@ -83,7 +85,7 @@ export const Womens = () => {
                     </div>
                     <div className="bar-right">
                         {/* <MultipleSelectCheckmarks title={"Sortby"} names={Sortby}></MultipleSelectCheckmarks> */}
-                        <select name=""  onChange={(e) => setSort(e.target.value)}>
+                        <select name=""  onChange={(e) => handleSort(e.target.value)}>
                             <option value="desc">Price High To Low</option>
                             <option value="asc">Price Low To High</option>
                             <option value="">Newest</option>

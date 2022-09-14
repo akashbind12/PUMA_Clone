@@ -71,12 +71,12 @@ router.get("/",async(req,res)=>{
 
         let products;
         if (order=="asc") {
-            products=await Product.find().sort({price : -1})
+            products=await Product.find(qNew).sort({price : 1})
         }else if (order=="desc") {
-            products=await Product.find().sort({price : 1})
+            products=await Product.find(qNew).sort({price : -1})
         }
         else if(qNew){
-            products=await Product.find(qNew).sort({createdAt: -1})
+            products=await Product.find(qNew).sort({createdAt: 1})
         }
         else{
             products=await Product.find();
