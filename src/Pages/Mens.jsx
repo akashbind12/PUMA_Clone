@@ -20,7 +20,7 @@ export const Mens = () => {
         Price: [],
         Gender: [],
         Size: [],
-        Color : []
+        Color: [],
     })
     
     useEffect(() => {
@@ -34,10 +34,10 @@ export const Mens = () => {
     const [sort, setSort] = useState(null)
     console.log(sort)
     useEffect(() => {
+        setSearchParams(filter, { replace: true })
         if (sort) {
             setSearchParams({order : sort,}, {replace : true})
         }
-        setSearchParams( filter , {replace : true})
       },[sort,setSearchParams,filter])
 
     const getdata = () => {

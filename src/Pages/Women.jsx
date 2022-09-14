@@ -14,6 +14,15 @@ export const Womens = () => {
     const [womensdata, setWomensdata] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
     const [loading, setLoading] = useState(false)
+
+    const [filter, setFilter] = useState({
+        Category: [],
+        ProductType: [],
+        Price: [],
+        Gender: [],
+        Size: [],
+        Color: [],
+    })
     
     useEffect(() => {
         getdata()
@@ -23,10 +32,11 @@ export const Womens = () => {
     const [sort, setSort] = useState(null)
     console.log(sort)
     useEffect(() => {
+        setSearchParams(filter, { replace: true })
         if (sort) {
-            setSearchParams({ order : sort,}, {replace : true})
+            setSearchParams({order : sort,}, {replace : true})
         }
-      },[sort,setSearchParams])
+      },[sort,setSearchParams,filter])
 
     const getdata = () => {
         setLoading(true)
@@ -64,12 +74,12 @@ export const Womens = () => {
             <div className="filters-div">
                 <div className="filers-line">
                     <div className="bar-left">
-                        <MultipleSelectCheckmarks title={"Category"} names={Categories}></MultipleSelectCheckmarks>
-                        <MultipleSelectCheckmarks title={"ProductType"} names={ProductType}></MultipleSelectCheckmarks>
-                        <MultipleSelectCheckmarks title={"Price"} names={Price}></MultipleSelectCheckmarks>
-                        <MultipleSelectCheckmarks title={"Gender"} names={Gender}></MultipleSelectCheckmarks>
-                        <MultipleSelectCheckmarks title={"Size"} names={Size}></MultipleSelectCheckmarks>
-                        <MultipleSelectCheckmarks title={"Color"} names={Color}></MultipleSelectCheckmarks>
+                    <MultipleSelectCheckmarks  setState={setFilter} state={filter} title={"Category"} names={Categories}></MultipleSelectCheckmarks>
+                    <MultipleSelectCheckmarks setState={setFilter} state={filter} title={"ProductType"} names={ProductType}></MultipleSelectCheckmarks>
+                    <MultipleSelectCheckmarks setState={setFilter} state={filter} title={"Price"} names={Price}></MultipleSelectCheckmarks>
+                    <MultipleSelectCheckmarks setState={setFilter} state={filter} title={"Gender"} names={Gender}></MultipleSelectCheckmarks>
+                    <MultipleSelectCheckmarks setState={setFilter} state={filter} title={"Size"} names={Size}></MultipleSelectCheckmarks>
+                    <MultipleSelectCheckmarks setState={setFilter} state={filter} title={"Color"} names={Color}></MultipleSelectCheckmarks>
                     </div>
                     <div className="bar-right">
                         {/* <MultipleSelectCheckmarks title={"Sortby"} names={Sortby}></MultipleSelectCheckmarks> */}
