@@ -21,19 +21,15 @@ const MenuProps = {
 };
 
 
-export default function MultipleSelectCheckmarks({names,title}) {
-    const [Name, setName] = React.useState([]);
-    const [state, seState] = React.useState(title)
+export default function MultipleSelectCheckmarks({names,title,state,setState}) {
+    const [Name, setName] = React.useState([]); 
+    const [searchParams, setSearchParams] = useSearchParams()
   
-  const [searchParams, setSearchParams] = useSearchParams()
   
-    // we will get selected value here use redux to handle state
-    // setSearchParams( { title : Name })
     useEffect(() => {
-     
-      
-      setSearchParams( { [title]: Name }, {replace : true})
-    },[Name,setSearchParams])
+      setState({ ...state, [title]: Name })
+      console.log("state :",state)
+    },[Name])
   
   const handleChange = (event) => {
     const {
