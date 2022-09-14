@@ -4,7 +4,7 @@
 https://puma-clone-eight.vercel.app/
 
 ## backend 
-https://puma-api.herokuapp.com/
+https://puma-new-backend.herokuapp.com/
 
 # [Puma.com](https://in.puma.com/)
 
