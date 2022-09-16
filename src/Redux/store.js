@@ -1,4 +1,4 @@
-import { applyMiddleware, combineReducers, legacy_createStore } from "redux";
+import { applyMiddleware, combineReducers, legacy_createStore,compose } from "redux";
 import thunk from "redux-thunk"
 import { CartReducer} from "./cart/reducer";
 
