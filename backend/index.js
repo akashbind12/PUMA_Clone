@@ -6,9 +6,9 @@ const app=express()
 require('dotenv').config()
 app.use(express.json())
 
-const MensController = require("./controllers/mens.controller")
-const WomensController = require("./controllers/womens.controller")
-const CartController = require("./controllers/cart.controller")
+const MensController = require("./src/controllers/mens.controller")
+const WomensController = require("./src/controllers/womens.controller")
+const CartController = require("./src/controllers/cart.controller")
 
 app.use(cors());
 
@@ -22,7 +22,7 @@ app.use("/Mens", MensController)
 app.use("/Womens", WomensController)
 app.use("/cart", CartController)
 
-const connect=require("./configs/db")
+const connect=require("./src/configs/db")
 
 
 
