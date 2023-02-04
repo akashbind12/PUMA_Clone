@@ -40,7 +40,7 @@ export const Mens = () => {
 
         setLoading(true)
 
-        axios.get(`https://puma-new-backend.herokuapp.com/Mens${location.search}`)
+        axios.get(`https://puma-backend-new.onrender.com/Mens${location.search}`)
             .then(function (response) {
                 setLoading(false)
               console.log(response.data);

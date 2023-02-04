@@ -36,7 +36,7 @@ export const ProductDetails = () => {
     },[])
     
     const getdata = () => {
-        axios.get(`https://puma-new-backend.herokuapp.com${location.pathname}`)
+        axios.get(`https://puma-backend-new.onrender.com${location.pathname}`)
         .then((res) => {
             // console.log(res.data)
             setProduct(res.data)

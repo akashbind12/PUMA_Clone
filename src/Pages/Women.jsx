@@ -37,7 +37,7 @@ export const Womens = () => {
 
     const getdata = () => {
         setLoading(true)
-        axios.get(`https://puma-new-backend.herokuapp.com/womens${location.search}`)
+        axios.get(`https://puma-backend-new.onrender.com/womens${location.search}`)
             .then(function (response) {
               setLoading(false)
               console.log(response.data);
